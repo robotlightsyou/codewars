@@ -32,4 +32,31 @@ def likes(names):
 def array_diff(a, b):
     return [i for i in a if i not in b]
 
-#test edit
+"""7kyu Sum nth term of Series"""
+
+def series_sum(n):
+    denom = 1
+    series = [1]
+    if n > 1:
+        for i in range(1, n):
+            denom += 3
+            series.append(1/denom)
+    return format(sum([i for i in series[:n]]), '.2f')
+
+"""6kyu Mexican Wave"""
+
+def wave(people):
+    out = []
+    spaces = 0
+    for i,v in enumerate(people):
+        offset = i - spaces
+        if v != " ":
+            out.append(list(people))
+            if out[offset][i].isalpha():
+                out[offset][i] = out[offset][i].upper()
+            out[offset] = "".join(out[offset])
+        else:
+            spaces += 1
+    return out
+
+
