@@ -59,4 +59,33 @@ def wave(people):
             spaces += 1
     return out
 
-#test edit
+"""6 kyu two sum"""
+
+from itertools  import combinations
+def two_sum(numbers, target):
+    answer = []
+    out = []
+    for t in combinations(numbers, 2):
+        if sum(t) == target:
+            out = [t[0],t[1]]
+            break
+    if out[0] == out[1]: 
+        answer.append(numbers.index(out[0]))
+        numbers.pop(numbers.index(out[0]))
+        answer.append((numbers.index(out[1])) + 1)
+    else:
+        answer.append(numbers.index(out[0]))
+        answer.append((numbers.index(out[1])))
+    return answer
+
+
+"""6kyu Bouncing Balls: How many times will a ball pass a window?"""
+
+def bouncing_ball(h, bounce, window):
+    count = 0
+    if not 0 < bounce < 1:
+        return -1
+    while h > window:
+        count += 1
+        h *= bounce
+    return 2 * count - 1
