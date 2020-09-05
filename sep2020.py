@@ -66,3 +66,26 @@ def who_would_win(mon1, mon2):
         if m2.attack(m1):
             return f"{m2.number} {m2.type}(s) won"
 
+"""6kyu Counting Duplicates"""
+
+def duplicate_count(text):
+    ans = {}
+    for i in text.lower():
+        if i in ans:
+            ans[i] += 1
+        else:
+            ans[i] = 1
+    dups = len([k for k in ans if ans[k] > 1])
+    return dups
+
+"""6 kyu Another one down, survival of the fittest"""
+
+def remove_smallest(n, arr):
+    result = arr[:]
+    if arr == [] or n <= 0: return arr
+    if n > len(arr): return []
+    while n > 0:
+        result.remove(min(result))
+        n -= 1
+    return result
+
