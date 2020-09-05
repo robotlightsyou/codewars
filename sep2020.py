@@ -32,60 +32,37 @@ def likes(names):
 def array_diff(a, b):
     return [i for i in a if i not in b]
 
-"""7kyu Sum nth term of Series"""
+"""6kyu Heroes of Might and Magic II: 1v1 combat"""
 
-def series_sum(n):
-    denom = 1
-    series = [1]
-    if n > 1:
-        for i in range(1, n):
-            denom += 3
-            series.append(1/denom)
-    return format(sum([i for i in series[:n]]), '.2f')
+class Monster:
+    def __init__(self, dictionary):
+        for k, v in dictionary.items():
+            setattr(self, k, v)
+        self.current_hp = self.hitpoints
+            
+    def no_lives(self):
+        return self.number <= 0
+        
+    def attack(self, defend):
+        round_damage = self.number * self.damage
+        while round_damage > 0:
+            if round_damage >= defend.current_hp:
+                defend.number -= 1
+                round_damage -= defend.current_hp
+                defend.current_hp = defend.hitpoints
+            else:
+                defend.current_hp -= round_damage
+                round_damage = 0
+            if defend.no_lives():
+                return True
+            
+def who_would_win(mon1, mon2):
+    m1 = Monster(mon1)
+    m2 = Monster(mon2)
+    
+    while True:
+        if m1.attack(m2):
+            return f"{m1.number} {m1.type}(s) won"
+        if m2.attack(m1):
+            return f"{m2.number} {m2.type}(s) won"
 
-"""6kyu Mexican Wave"""
-
-def wave(people):
-    out = []
-    spaces = 0
-    for i,v in enumerate(people):
-        offset = i - spaces
-        if v != " ":
-            out.append(list(people))
-            if out[offset][i].isalpha():
-                out[offset][i] = out[offset][i].upper()
-            out[offset] = "".join(out[offset])
-        else:
-            spaces += 1
-    return out
-
-"""6 kyu two sum"""
-
-from itertools  import combinations
-def two_sum(numbers, target):
-    answer = []
-    out = []
-    for t in combinations(numbers, 2):
-        if sum(t) == target:
-            out = [t[0],t[1]]
-            break
-    if out[0] == out[1]: 
-        answer.append(numbers.index(out[0]))
-        numbers.pop(numbers.index(out[0]))
-        answer.append((numbers.index(out[1])) + 1)
-    else:
-        answer.append(numbers.index(out[0]))
-        answer.append((numbers.index(out[1])))
-    return answer
-
-
-"""6kyu Bouncing Balls: How many times will a ball pass a window?"""
-
-def bouncing_ball(h, bounce, window):
-    count = 0
-    if not 0 < bounce < 1:
-        return -1
-    while h > window:
-        count += 1
-        h *= bounce
-    return 2 * count - 1
