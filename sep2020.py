@@ -89,3 +89,14 @@ def remove_smallest(n, arr):
         n -= 1
     return result
 
+"""6 kyu write number in expanded form"""
+
+def expanded_form(num):
+    return " + ".join([v + ("0" * i) for i,v in enumerate(list(str(num))[::-1]) if v != "0"][::-1])
+
+#     lst = [i for i in str(num)]
+#     ans = []
+#     for i,v in enumerate(lst[::-1]):
+#         if v != "0":
+#             ans.append(v + ("0" * i))
+#     return " + ".join(ans[::-1])
