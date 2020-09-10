@@ -100,3 +100,20 @@ def expanded_form(num):
 #         if v != "0":
 #             ans.append(v + ("0" * i))
 #     return " + ".join(ans[::-1])
+
+"""6kyu swap case using n"""
+
+def swap(s,n):
+    n = "{0:b}".format(n)   
+    binary = list(n * (len(s) // len(n) + 1))
+    out = ''
+    for index, value in enumerate(s):
+        if value.isalpha() != True:
+            binary.insert(index, ' ')   
+    binary = "".join(binary)
+    for index, value in enumerate(s):
+        if binary[index] == '1':
+            out += value.swapcase()
+        else:
+            out += value
+    return out
