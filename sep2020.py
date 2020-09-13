@@ -117,3 +117,22 @@ def swap(s,n):
         else:
             out += value
     return out
+
+"""6kyu String Array Duplicates """
+
+def dup(arry):
+    out = []
+    for index, word in enumerate(arry):
+        out.append(f'{word[0]}')
+        for index2, letter in enumerate(word[1:]):
+            if letter != word[index2]:
+                out[index] += letter
+    return out
+
+"""6 kyu Format a string like 'Bart, Lisa & Maggie'"""
+
+def namelist(names):
+    if len(names) < 2:
+        return ''.join([i[k] for i in names for k in i.keys()])
+    else:
+        return ', '.join([i[k] for i in names[:-1] for k in i.keys()]) + ' & ' + names[-1]['name']
