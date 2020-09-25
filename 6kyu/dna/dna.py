@@ -3,9 +3,13 @@ import csv
 
 
 def main():
-    check_args(argument=argv)
-    dna_dict, people_list = get_people(peoplefile=argv[1])
-    dna_string = get_dna_string(dnafile=argv[2]).rstrip()
+
+    # check_args(argument=argv)
+
+    # dna_dict, people_list = get_people(peoplefile=argv[1])
+    dna_dict, people_list = get_people(peoplefile='./databases/large.csv')
+    dna_string = get_dna_string(dnafile='./sequences/5.txt').rstrip()
+    # dna_string = get_dna_string(dnafile=argv[2]).rstrip()
     totals = calc_STR(dna_string=dna_string, str_list=dna_dict['SRTs'])
     string_numbers = make_strings(totals)
     print(dna_match(people=people_list, numbers=string_numbers))
@@ -48,7 +52,9 @@ def get_dna_string(dnafile=''):
 
 def calc_STR(dna_string='', str_list=[]):
     ''' compute longest run of eact STR in DNA '''
-    count = [0, 0, 0]
+    count = [0 for i in str_list]
+    # print(str_list)
+    # print(count)
     for index, STR in enumerate(str_list):
         length = len(STR)
         for i, v in enumerate(dna_string):
@@ -60,7 +66,8 @@ def calc_STR(dna_string='', str_list=[]):
 
 def is_match(STR='', dna_string=''):
     ''' check if seq matces STR, return 1 if true else 0 '''
-    return 1 if STR == dna_string else 0
+    ret = 1 if STR == dna_string else 0
+    return ret
 
 
 def make_strings(number_list=[]):
