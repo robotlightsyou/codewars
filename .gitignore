@@ -1,6 +1,8 @@
 */dna/databases/*
 */dna/sequences/*
 */6kyu/seven/imdb/title.basics.tsv
+*/imdb/title.basics.tsv
+*/seven/imdb/title*
 <<<<<<< HEAD
 */dna/__pycache__/*
 =======
