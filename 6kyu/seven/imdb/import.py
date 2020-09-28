@@ -12,12 +12,14 @@ with open("title.basics.tsv", "r") as titles:
 
         for row in reader:
 
-            if row["startYear"] != "\\N":
+            if row["startYear"] == "\\N":
+                continue
 
-                year = int(row["startYear"])
+            year = int(row["startYear"])
 
-                if year > 1969:
+            if year < 1970:
+                continue
 
-                    if row["titleType"] == "tvSeries" and row["isAdult"] == '0':
+            if row["titleType"] == "tvSeries" and row["isAdult"] == '0':
 
-                        writer.writerow([row["tconst"], row["primaryTitle"], row["startYear"], row["genres"]])
+                writer.writerow([row["tconst"], row["primaryTitle"], row["startYear"], row["genres"]])
