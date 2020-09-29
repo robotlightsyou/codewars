@@ -4,4 +4,7 @@
 */imdb/title.basics.tsv
 */seven/imdb/title*
 */dna/__pycache__/*
+**.csv
 **/src7/**
+**.db
+**/.DS_Store
