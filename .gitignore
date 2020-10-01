@@ -5,6 +5,7 @@
 */seven/imdb/title*
 */dna/__pycache__/*
 **.csv
+**.tsv
 **/src7/**
 **.db
 **/.DS_Store
