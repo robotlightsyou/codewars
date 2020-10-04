@@ -2,14 +2,15 @@ import csv
 from cs50 import SQL
 from sys import argv, exit
 
+
 db = SQL("sqlite:///students.db")
+
 
 def main():
     check_args(argument=argv)
     get_people(peoplefile=argv[1])
 
 
-#arg len check
 def check_args(argument=[]):
     ''' incorrect len(argv) -> print error '''
     if len(argument) != 2:
@@ -17,7 +18,8 @@ def check_args(argument=[]):
         exit(1)
 
 
-def split_names(namestring= ""):
+def split_names(namestring=""):
+    ''' check if namestring has 2 or 3 names, fill middle with None if missing '''
     if namestring.count(" ") == 2:
         first, middle, last = namestring.split()
     else:
@@ -27,13 +29,14 @@ def split_names(namestring= ""):
 
 
 def get_people(peoplefile=''):
-    ''' first CLA -> CSV file open CSV and read contents into memory first row
-    will be column names starting with 'name' and followed by str sequences '''
+    ''' read from a csv to dictionary, then insert into SQL table.'''
     with open(peoplefile, newline='') as f:
         fieldnames = ['name', 'house', 'birth']
         seq_reader = csv.DictReader(f, fieldnames=fieldnames)
         for index, row in enumerate(seq_reader):
-            if index == 0: continue
+            #skip the column titles
+            if index == 0:
+                continue
             first, middle, last = split_names(row['name'])
 
             db.execute("INSERT INTO students (first, middle, last, house, birth) VALUES(?,?,?,?,?)",
