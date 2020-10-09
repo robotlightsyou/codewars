@@ -30,13 +30,15 @@ def get_dna():
         people = f.read()
     dna_list = [line for line in people]
 
-    peoples_dna = ''
-    for _, val in enumerate(dna_list):  # makes the dna_list into a string
-        peoples_dna += val
-    peoples_dna = peoples_dna.strip()
-
+    peoples_dna = ''.join([val for _, val in enumerate(dna_list)]).strip()
     lst = [sentence.split(',') for sentence in peoples_dna.splitlines()]
     return lst
+
+
+'''    peoples_dna = ''
+    for _, val in enumerate(dna_list):  # makes the dna_list into a string
+        peoples_dna += val
+    peoples_dna = peoples_dna.strip() '''
 
 
 def get_repeat_list(letters=[], lst=[]):
