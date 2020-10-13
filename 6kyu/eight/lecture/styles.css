@@ -1,0 +1,28 @@
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css);
+
+body{
+    background-color: #041627;
+    color: red;
+    font-family: 'Fira Code', monospace;
+}
+
+li{
+    border: 2px solid green;
+    margin: 2px;
+}
+
+ol{
+    border: 6px solid blue;
+    margin: 10px;
+}
+
+#one{
+    background-color: #00ffff;
+}
+.first{
+    text-align: center;
+    color: #00aaff;
+}
+.second{
+    color: #aa00ff;
+}
