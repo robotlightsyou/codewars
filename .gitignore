@@ -9,3 +9,4 @@
 **/src7/**
 **.db
 **/.DS_Store
+**/flask_session/*
