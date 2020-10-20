@@ -5,7 +5,13 @@
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="./styles.css" rel="stylesheet">
-    <title>Tasks</title>
+    {% block title %}
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+            <title>REGISTRANTS</title>
+        {% endif %}
+    {% endblock title %}
     <script src="cs50.js"></script>
     <style>
         {% block style %}

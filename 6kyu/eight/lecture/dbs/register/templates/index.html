@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Registrants</h1>
+        <ul>
+            {% for row in rows %}
+                <!--<li><td>Name: {{ row["name"] }}</td> <td>Email: {{ row["email"]}}</li></td>-->
+                <li>Name: {{ row["name"] }} Email: {{ row["email"]}}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/register">Register here!</a>
+    </div>
+{% endblock body %}
