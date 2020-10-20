@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Register</title>
+{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <h1>REGISTER</h1>
+        <form action="/register" method="post">
+            <input id='name' type="text" name="name" placeholder="Name">
+            <input id='email' type="text" name="email" placeholder="Email">
+            <!--<input id='submit' type="submit" disabled>-->
+            <input id='submit' type="submit">
+        <!--/form>
+        <<script>
+            document.querySelector('#name').onkeyup = function() {
+                if (document.querySelector('#name').value === ''){
+                    document.querySelector('#submit').disabled =true;
+                } else{
+                    document.querySelector('#submit').disabled =false;
+                    
+                }
+            }
+        </script>-->
+    </div>
+{% endblock body %}

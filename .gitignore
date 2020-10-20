@@ -6,6 +6,7 @@
 **/__pycache__/*
 **.csv
 **.tsv
+**.zip
 **/src7/**
 **.db
 **/.DS_Store
